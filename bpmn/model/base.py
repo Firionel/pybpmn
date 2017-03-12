@@ -99,11 +99,12 @@ class BpmnModelObject(object):
                 continue
             try:
                 child_instance = BpmnModelObject.from_dom_node(parent_definitions, child_node)
-                instance._children.append(ref(child_instance))
             except NoResponsibleClass:
-                pass
-            except  ResponsibleClassAmbiguous:
-                pass
+                continue
+            except ResponsibleClassAmbiguous:
+                continue
+            if child_node.tagName.split(':')[-1] in target_child_references.values():
+                instance._children.append(ref(child_instance))
 
         return instance
 

@@ -25,6 +25,8 @@ class BpmnDefinitions(BpmnBaseObject):
     def from_dom_node(cls, parent_definitions, node):
         element_id = cls._element_id_from_node(node)
         instance = cls(element_id)
+        cls._set_attributes_from_node(node, instance)
+
         for child_node in node.childNodes:
             if child_node.nodeType != Node.ELEMENT_NODE:
                 continue
@@ -35,7 +37,6 @@ class BpmnDefinitions(BpmnBaseObject):
             except ResponsibleClassAmbiguous:
                 pass
 
-        cls._set_attributes_from_node(node, instance)
         return instance
 
     def get_item_by_id(self, element_id):
