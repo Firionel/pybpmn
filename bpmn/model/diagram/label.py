@@ -1,6 +1,10 @@
 
-from .base import BpmnDiagramBaseObject
+from .base import BpmnDiagramModelObject
 
 
-class BpmnLabel(BpmnDiagramBaseObject):
-    pass
+class BpmnLabel(BpmnDiagramModelObject):
+
+    __tag_names = ('BPMNLabel', )
+    __child_refs = {'bounds': 'Bounds'}
+
+

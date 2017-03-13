@@ -1,7 +1,8 @@
 
-from ..base import BpmnModelObject
+from ..base import BpmnDiagramModelObject
 
-class Waypoint(BpmnModelObject):
+
+class Waypoint(BpmnDiagramModelObject):
 
     __tag_names = ('waypoint', )
     __bpmn_attributes = ('type', 'x', 'y')
