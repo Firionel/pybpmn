@@ -4,17 +4,21 @@ import uuid
 from weakref import ref
 from xml.dom.minidom import Node
 
+from .meta import BpmnModelMeta
 from .exceptions import NoResponsibleClass, ResponsibleClassAmbiguous
 from ..util.reflection import get_all_subclasses_for_class
 
 
 class BpmnModelObject(object):
 
+    __metaclass__ = BpmnModelMeta
+
     __tag_names = tuple()
     __bpmn_attributes = tuple()
     _child_refs = {}
     _class_cache = {}
     requires_id = False
+
 
     def __init__(self, definitions_parent):
         self._synthetic_id = uuid.uuid4().get_hex()
