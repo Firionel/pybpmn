@@ -126,6 +126,10 @@ class BpmnModelObject(object):
             matching_class = self.__class__.class_for_tag_name(child_refs[reftype])
             return [child for child in self.children() if isinstance(child, matching_class)]
 
+    def create_dom_shape(self, document):
+        shape_element = document.createElement("g")
+        return shape_element
+
 
 class BpmnBaseObject(BpmnModelObject):
     __bpmn_attributes = ('id',)

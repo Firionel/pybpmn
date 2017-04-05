@@ -3,7 +3,13 @@ from ..base import BpmnFlowNode
 
 
 class BpmnEvent(BpmnFlowNode):
-    pass
+
+    def create_dom_shape(self, document):
+        shape_element = document.createElement("circle")
+        shape_element.setAttribute("cx", "18")
+        shape_element.setAttribute("cy", "18")
+        shape_element.setAttribute("r", "18")
+        return shape_element
 
 
 class BpmnThrowEvent(BpmnEvent):
